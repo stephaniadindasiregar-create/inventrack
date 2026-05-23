@@ -28,5 +28,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    } 
+
+    // ✅ POSISI YANG BENAR: Di luar fungsi casts(), tapi masih di dalam class User
+    // Relasi: 1 User memiliki banyak (hasMany) Items
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'users_id');
     }
 }
